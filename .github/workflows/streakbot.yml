@@ -2,7 +2,7 @@ name: Daily Commit
 
 on:
   schedule:
-    - cron: '6 18 * * *'  # Every day at 6:06 PM UTC
+    - cron: '6 13 * * *'  # Every day at 6:06 PM Pakistan Time (1:06 PM UTC)
   workflow_dispatch:      # Manual trigger for testing
 
 jobs:
