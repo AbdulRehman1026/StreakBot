@@ -1,0 +1,33 @@
+name: Run StreakBot Daily
+
+on:
+  schedule:
+    - cron: '*/1 * * * *'  # Every minute (UTC)
+  workflow_dispatch:       # Allow manual runs
+
+jobs:
+  run-bot:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run the StreakBot script
+        env:
+          GITHUB_USERNAME: ${{ secrets.GH_USERNAME }}
+          GITHUB_EMAIL: ${{ secrets.GH_EMAIL }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          REPO_PATH: .
+          PUSH_TIME: 23
+        run: python streakbot.py

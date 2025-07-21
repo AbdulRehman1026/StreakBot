@@ -12,14 +12,15 @@ GITHUB_USERNAME = os.getenv("GITHUB_USERNAME")
 GITHUB_EMAIL = os.getenv("GITHUB_EMAIL")
 GITHUB_TOKEN = os.getenv("GITHUB_TOKEN")
 REPO_PATH = os.getenv("REPO_PATH", ".")
-PUSH_HOUR = int(os.getenv("PUSH_TIME", 23))  # Default to 11 PM
+PUSH_HOUR = int(os.getenv("PUSH_TIME", 11))  # Default to 11 PM
 
 # Define Pakistan timezone
 pakistan_tz = pytz.timezone("Asia/Karachi")
 now = datetime.datetime.now(pakistan_tz)
 
 def should_push(now):
-    return now.hour == PUSH_HOUR and now.minute == 0
+    # return now.hour == PUSH_HOUR and now.minute == 0
+    return True
 
 def format_date(now):
     return now.strftime("%d/%B/%Y")  # Example: 21/July/2025
