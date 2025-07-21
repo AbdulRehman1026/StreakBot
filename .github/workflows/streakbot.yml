@@ -2,8 +2,8 @@ name: Run StreakBot Daily
 
 on:
   schedule:
-    - cron: '*/1 * * * *'  # Every minute (UTC)
-  workflow_dispatch:       # Allow manual runs
+    - cron: '*/1 * * * *'  # Every minute UTC for testing
+  workflow_dispatch:
 
 jobs:
   run-bot:
